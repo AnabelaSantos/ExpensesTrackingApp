@@ -1,16 +1,38 @@
 package com.ExpensesTrackingApp.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+// mark class as an Entity
+@Entity
+
+//defining class name as Table name
+@Table
+
 public class Expense {
 
+    //mark id as primary key
+    @Id
+
+    // defining id as column name
+    @Column
     private int id;
 
+    //defining amount as column name
+    @Column
     private float amount;
 
+    //defining note as column name
+    @Column
     private String note;
 
-    // need to add category???
-
+    //defining status as column name
+    @Column
     private boolean status;
+
+    // need to add category and email (foreign keys)???
 
 
 

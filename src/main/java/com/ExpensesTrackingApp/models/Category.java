@@ -1,11 +1,30 @@
 package com.ExpensesTrackingApp.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.ArrayList;
 import java.util.List;
 
+//mark class as entity
+@Entity
+
+//defining class name as Table name
+@Table
+
 public class Category {
+
+    //mark id as primary key
+    @Id
+
+    //defining id as column name
+    @Column
     private int id;
 
+    //defining description as column name
+    @Column
     private String description;
 
     private List<Expense> expenses = new ArrayList<>();

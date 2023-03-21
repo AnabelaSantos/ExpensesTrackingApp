@@ -1,4 +1,4 @@
-package com.ExpensesTrackingApp.controllers;
+package com.ExpensesTrackingApp.controller;
 
 
 import com.ExpensesTrackingApp.models.Expense;
