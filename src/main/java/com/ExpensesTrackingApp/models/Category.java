@@ -1,9 +1,6 @@
 package com.ExpensesTrackingApp.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +15,17 @@ public class Category {
 
     //mark id as primary key
     @Id
-
+    //make it  as auto generated
+    @GeneratedValue(strategy = GenerationType.AUTO)
     //defining id as column name
-    @Column
+    @Column(name = "id")
     private int id;
 
     //defining description as column name
-    @Column
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "expenses")
     private List<Expense> expenses = new ArrayList<>();
 
     public Category(int id, String description, List<Expense> expenses) {
