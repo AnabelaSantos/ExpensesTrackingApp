@@ -1,5 +1,6 @@
-package Repository;
+package com.ExpensesTrackingApp.Repository;
 
+import com.ExpensesTrackingApp.models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

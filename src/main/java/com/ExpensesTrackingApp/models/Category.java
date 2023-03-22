@@ -7,10 +7,6 @@ import java.util.List;
 
 //mark class as entity
 @Entity
-
-//defining class name as Table name
-@Table
-
 public class Category {
 
     //mark id as primary key
@@ -19,13 +15,14 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     //defining id as column name
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     //defining description as column name
     @Column(name = "description")
     private String description;
 
     @Column(name = "expenses")
+    @OneToMany(mappedBy = "category")
     private List<Expense> expenses = new ArrayList<>();
 
     public Category(int id, String description, List<Expense> expenses) {

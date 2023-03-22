@@ -4,19 +4,15 @@ import jakarta.persistence.*;
 
 // mark class as an Entity
 @Entity
-
-//defining class name as Table name
-@Table
-
 public class Expense {
 
     //mark id as primary key
     @Id
     //make it  as auto generated
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     // defining id as column name
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     //defining amount as column name
     @Column(name = "amount")
@@ -32,11 +28,9 @@ public class Expense {
 
     // need to add category and email (foreign keys)???
     @ManyToOne
-    @JoinColumn(name="email")
-    private User user;
+    private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name="category_id")
     public Category category;
 
 
@@ -65,7 +59,9 @@ public class Expense {
 
         this.category = category;
     }
+    public Expense(){
 
+    }
     public int getId() {
         return id;
     }
@@ -90,11 +86,35 @@ public class Expense {
         this.note = note;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public Customer getUser() {
+        return customer;
+    }
+
+    public void setUser(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
