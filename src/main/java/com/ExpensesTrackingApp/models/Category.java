@@ -12,7 +12,7 @@ public class Category {
     //mark id as primary key
     @Id
     //make it  as auto generated
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //defining id as column name
     @Column(name = "id")
     private Integer id;
@@ -25,19 +25,14 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Expense> expenses = new ArrayList<>();
 
-    public Category(int id, String description, List<Expense> expenses) {
-        this.id = id;
+    public Category(String description, List<Expense> expenses) {
+        super();
         this.description = description;
         this.expenses = expenses;
     }
 
-    public Category(int id, String description) {
-        this.id = id;
+    public Category(String description) {
         this.description = description;
-    }
-
-    public Category(int id) {
-        this.id = id;
     }
 
     public  Category(){

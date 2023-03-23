@@ -34,23 +34,20 @@ public class Expense {
     public Category category;
 
 
-    public Expense(int id, float amount, String note, boolean status, Category category) {
-        this.id = id;
+    public Expense(float amount, String note, boolean status, Category category) {
         this.amount = amount;
         this.note = note;
         this.status = status;
         this.category = category;
     }
 
-    public Expense(int id, float amount, String note, Category category) {
-        this.id = id;
+    public Expense(float amount, String note, Category category) {
         this.amount = amount;
         this.note = note;
         this.category = category;
     }
 
-    public Expense(int id, float amount, Category category) {
-        this.id = id;
+    public Expense(float amount, Category category) {
         this.amount = amount;
         this.category = category;
     }
@@ -62,11 +59,12 @@ public class Expense {
     public Expense(){
 
     }
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -86,7 +84,7 @@ public class Expense {
         this.note = note;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
@@ -94,19 +92,11 @@ public class Expense {
         this.status = status;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public Customer getUser() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setUser(Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
@@ -117,4 +107,6 @@ public class Expense {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
 }
