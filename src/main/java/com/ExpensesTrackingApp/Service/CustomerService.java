@@ -3,10 +3,11 @@ package com.ExpensesTrackingApp.Service;
 import com.ExpensesTrackingApp.Repository.UserRepository;
 import com.ExpensesTrackingApp.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class CustomerService {
     @Autowired
     UserRepository userRepository;
@@ -14,9 +15,7 @@ public class CustomerService {
     //getting all customers records
     public List<Customer> getAllCustomer()
     {
-        List<Customer> customers = new ArrayList<Customer>();
-        userRepository.findAll().forEach(customer->customers.add(customer));
-        return customers;
+       return userRepository.findAll();
     }
 
     //getting a specific record

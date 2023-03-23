@@ -22,15 +22,15 @@ public class CustomerController {
 
 //creating a get mapping that retrieves a list with all customers' details
     @GetMapping("/customer")
-    private List<Customer> getAllCustomer() {
-        return userRepository.findAll();
+    public List<Customer> getAllCustomer() {
+        return customerService.getAllCustomer();
         }
 
 //creating a get mapping that retrieves a detail of a specific customer
-//    @GetMapping("/customer/{id}")
-//    private Customer getCustomer(@PathVariable("id")Long id){
-//        return customerService.getCustomerById(id);
-//    }
+    @GetMapping("/customer/{id}")
+    public Customer getCustomer(@PathVariable("id")Long id){
+        return customerService.getCustomerById(id);
+    }
 
 
 

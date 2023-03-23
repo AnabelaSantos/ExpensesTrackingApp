@@ -1,9 +1,11 @@
 package com.ExpensesTrackingApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 // mark class as an Entity
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Expense {
 
     //mark id as primary key
@@ -28,6 +30,7 @@ public class Expense {
 
     // need to add category and email (foreign keys)???
     @ManyToOne
+    @JsonIgnoreProperties
     private Customer customer;
 
     @ManyToOne
