@@ -25,14 +25,14 @@ public class Customer {
 
     //defining expenses as column name
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    private List<Expense> expenses = new ArrayList<>();
+//    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+//    private List<Expense> expenses = new ArrayList<>();
 
-    public Customer(String username, String email, List<Expense> expenses){
-        this.username = username;
-        this.email = email;
-        this.expenses = expenses;
-    }
+//    public Customer(String username, String email, List<Expense> expenses){
+//        this.username = username;
+//        this.email = email;
+//        this.expenses = expenses;
+//    }
 
     public Customer(String username, String email){
         this.username = username;
@@ -58,13 +58,13 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
+//    public List<Expense> getExpenses() {
+//        return expenses;
+//    }
 
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
-    }
+//    public void setExpenses(List<Expense> expenses) {
+//        this.expenses = expenses;
+//    }
 
     public Long getId() {
         return id;

@@ -1,7 +1,10 @@
 package com.ExpensesTrackingApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 // mark class as an Entity
 @Entity
@@ -17,23 +20,29 @@ public class Expense {
     private Integer id;
 
     //defining amount as column name
-    @Column(name = "amount")
+    @Column(name = "Amount")
     private float amount;
 
     //defining note as column name
-    @Column(name = "note")
+    @Column(name = "Note")
     private String note;
 
     //defining status as column name
-    @Column(name = "status")
+    @Column(name = "Status")
     private boolean status;
 
     // need to add category and email (foreign keys)???
-    @ManyToOne
-    @JsonIgnoreProperties
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+//    @JsonIgnoreProperties
     private Customer customer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     public Category category;
 
 
@@ -87,7 +96,7 @@ public class Expense {
         this.note = note;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

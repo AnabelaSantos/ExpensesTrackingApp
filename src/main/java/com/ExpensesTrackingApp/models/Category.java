@@ -21,15 +21,15 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "expenses")
-    @OneToMany(mappedBy = "category")
-    private List<Expense> expenses = new ArrayList<>();
+//    @Column(name = "expenses")
+////    @OneToMany(mappedBy = "category")
+////    private List<Expense> expenses = new ArrayList<>();
 
-    public Category(String description, List<Expense> expenses) {
-        super();
-        this.description = description;
-        this.expenses = expenses;
-    }
+//    public Category(String description, List<Expense> expenses) {
+//        super();
+//        this.description = description;
+//        this.expenses = expenses;
+//    }
 
     public Category(String description) {
         this.description = description;
@@ -55,11 +55,11 @@ public class Category {
         this.description = description;
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
-
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
-    }
+//    public List<Expense> getExpenses() {
+//        return expenses;
+//    }
+//
+//    public void setExpenses(List<Expense> expenses) {
+//        this.expenses = expenses;
+//    }
 }

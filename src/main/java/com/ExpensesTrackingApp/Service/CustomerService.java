@@ -19,7 +19,6 @@ public class CustomerService {
     }
 
     //getting a specific record
-
     public Customer getCustomerById(Long id){
         return userRepository.findById(id).get();
     }
