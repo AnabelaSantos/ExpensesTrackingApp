@@ -5,9 +5,9 @@ import com.ExpensesTrackingApp.Repository.UserRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,7 +31,12 @@ public class CustomerController {
     public Customer getCustomer(@PathVariable("id")Long id){
         return customerService.getCustomerById(id);
     }
-
+// creating a post mapping that adds a new customer
+    @PostMapping("/customer")
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        Customer _customer = userRepository.save(new Customer(customer.getEmail(), customer.getUsername()));
+        return new ResponseEntity<>(_customer, HttpStatus.CREATED);
+    }
 
 
 
