@@ -62,15 +62,13 @@ public class ExpensesController {
 }
 
 
-//    @PostMapping("/customer/{customerId}/expenses")
-//    public ResponseEntity<Expense> createExpense(@PathVariable(value="customerId") Long customerId,
-//        @RequestBody Expense expenseRequest){
-//        Expense expense = customerService.getCustomerById(customerId).map(customer -> {
-//            expenseRequest.setCustomer(customer);
-//            return expenseRepository.save(expenseRequest);
-//        });
-//        return new ResponseEntity<>(expense, HttpStatus.CREATED);
-//    }
+    @PostMapping("/customer/{customerId}/expenses")
+    public ResponseEntity<Expense> createExpense(@PathVariable(value="customerId") Long customerId,
+        @RequestBody Expense expenseRequest){
+        Customer customer = customerService.getCustomerById(customerId);
+        Expense _expense = expenseService.save(expenseRequest, customer);
+        return new ResponseEntity<>(_expense, HttpStatus.CREATED);
+    }
 
 
 

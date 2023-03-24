@@ -34,7 +34,7 @@ public class CustomerController {
 // creating a post mapping that adds a new customer
     @PostMapping("/customer")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        Customer _customer = userRepository.save(new Customer(customer.getEmail(), customer.getUsername()));
+        Customer _customer = customerService.createCustomer(customer);
         return new ResponseEntity<>(_customer, HttpStatus.CREATED);
     }
 

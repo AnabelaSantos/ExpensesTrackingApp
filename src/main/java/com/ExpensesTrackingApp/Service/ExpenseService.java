@@ -51,6 +51,14 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
+    public Expense save(Expense expenseRequest, Customer customer) {
+        Expense _expense = new Expense();
+        _expense.setAmount(expenseRequest.getAmount());
+        _expense.setNote(expenseRequest.getNote());
+        _expense.setStatus(expenseRequest.getStatus());
+        _expense.setCustomer(customer);
+        return expenseRepository.save(_expense);
+    }
 }
 
 

@@ -23,8 +23,9 @@ public class CustomerService {
         return userRepository.findById(id).get();
     }
     //saving or updating a specific record
-    public void saveOrUpdate(Customer customer){
-        userRepository.save(customer);
+    public Customer createCustomer(Customer customer){
+        Customer _customer = userRepository.save(new Customer(customer.getEmail(), customer.getUsername()));
+        return _customer;
     }
     //deleting a specific record
     public void delete(Long id){
