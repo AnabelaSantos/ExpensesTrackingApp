@@ -1,7 +1,7 @@
 package com.ExpensesTrackingApp.controller;
 
 
-import com.ExpensesTrackingApp.Repository.UserRepository;
+import com.ExpensesTrackingApp.Repository.CustomerRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 public class CustomerController {
     @Autowired
-    UserRepository userRepository;
+    CustomerRepository customerRepository;
     @Autowired
     CustomerService customerService;
 
@@ -44,6 +44,8 @@ public class CustomerController {
         customerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
 
 
 

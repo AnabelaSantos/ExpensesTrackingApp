@@ -2,7 +2,7 @@ package com.ExpensesTrackingApp;
 
 import com.ExpensesTrackingApp.Repository.CategoryRepository;
 import com.ExpensesTrackingApp.Repository.ExpenseRepository;
-import com.ExpensesTrackingApp.Repository.UserRepository;
+import com.ExpensesTrackingApp.Repository.CustomerRepository;
 import com.ExpensesTrackingApp.models.Category;
 import com.ExpensesTrackingApp.models.Customer;
 import com.ExpensesTrackingApp.models.Expense;
@@ -11,13 +11,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Repository;
 
 @SpringBootApplication
 //@EnableAutoConfiguration
 public class ExpensesTrackingAppApplication{
 	@Autowired
-	UserRepository userRepository;
+	CustomerRepository customerRepository;
 	@Autowired
 	CategoryRepository categoryRepository;
 	@Autowired
@@ -35,12 +34,12 @@ public class ExpensesTrackingAppApplication{
 				Customer customer1 = new Customer();
 				customer1.setEmail("kate@gmail.com");
 				customer1.setUsername("Kate Uphill");
-				userRepository.save(customer1);
+				customerRepository.save(customer1);
 
 				Customer customer2 = new Customer();
 				customer2.setEmail("late@gmail.com");
 				customer2.setUsername("Late Timing");
-				userRepository.save(customer2);
+				customerRepository.save(customer2);
 
 				Category category1 = new Category();
 				category1.setDescription("Food");
@@ -77,6 +76,14 @@ public class ExpensesTrackingAppApplication{
 				expense3.setCategory(category2);
 				expense3.setCustomer(customer2);
 				expenseRepository.save(expense3);
+
+				Expense expense4 = new Expense();
+				expense4.setAmount(95.0F);
+				expense4.setNote("Merchandise");
+				expense4.setStatus(true);
+				expense4.setCategory(category2);
+				expense4.setCustomer(customer1);
+				expenseRepository.save(expense4);
 			}
 		};
 	}

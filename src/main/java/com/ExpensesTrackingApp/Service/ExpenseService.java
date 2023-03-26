@@ -1,20 +1,15 @@
 package com.ExpensesTrackingApp.Service;
 
 import com.ExpensesTrackingApp.Repository.ExpenseRepository;
-import com.ExpensesTrackingApp.Repository.UserRepository;
-import com.ExpensesTrackingApp.models.Customer;
 import com.ExpensesTrackingApp.models.Expense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ExpenseService {
@@ -58,6 +53,12 @@ public class ExpenseService {
         _expense.setStatus(expenseRequest.isStatus());
 //        _expense.setCustomerId(customer);
         return expenseRepository.save(_expense);
+    }
+
+    public List<Expense> findByStatus(boolean status, @PathVariable(value = "customerId") Long customerId) {
+        List<Expense> expenses = expenseRepository.findByStatusAndCustomerId(status, customerId);
+
+        return expenses;
     }
 }
 

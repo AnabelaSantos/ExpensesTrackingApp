@@ -1,34 +1,37 @@
 package com.ExpensesTrackingApp.Service;
 
-import com.ExpensesTrackingApp.Repository.UserRepository;
+import com.ExpensesTrackingApp.Repository.ExpenseRepository;
+import com.ExpensesTrackingApp.Repository.CustomerRepository;
 import com.ExpensesTrackingApp.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class CustomerService {
     @Autowired
-    UserRepository userRepository;
+    CustomerRepository customerRepository;
+    @Autowired
+    ExpenseRepository expenseRepository;
 
     //getting all customers records
     public List<Customer> getAllCustomer()
     {
-       return userRepository.findAll();
+       return customerRepository.findAll();
     }
 
     //getting a specific record
     public Customer getCustomerById(Long id){
-        return userRepository.findById(id).get();
+        return customerRepository.findById(id).get();
     }
     //Creating a new customer
     public Customer createCustomer(Customer customer){
-        Customer _customer = userRepository.save(new Customer(customer.getEmail(), customer.getUsername()));
+        Customer _customer = customerRepository.save(new Customer(customer.getEmail(), customer.getUsername()));
         return _customer;
     }
     //deleting a specific record
     public void deleteById(Long id){
-        userRepository.deleteById(id);
+        customerRepository.deleteById(id);
     }
+
 }
