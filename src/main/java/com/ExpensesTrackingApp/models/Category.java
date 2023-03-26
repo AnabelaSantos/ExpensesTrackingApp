@@ -1,47 +1,38 @@
 package com.ExpensesTrackingApp.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //mark class as entity
 @Entity
-
-//defining class name as Table name
-@Table
-
 public class Category {
 
     //mark id as primary key
     @Id
-
+    //make it  as auto generated
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //defining id as column name
-    @Column
-    private int id;
+    @Column(name = "id")
+    private Integer id;
 
     //defining description as column name
-    @Column
+    @Column(name = "description")
     private String description;
 
-    private List<Expense> expenses = new ArrayList<>();
+//    @Column(name = "expenses")
+////    @OneToMany(mappedBy = "category")
+////    private List<Expense> expenses = new ArrayList<>();
 
-    public Category(int id, String description, List<Expense> expenses) {
-        this.id = id;
+//    public Category(String description, List<Expense> expenses) {
+//        super();
+//        this.description = description;
+//        this.expenses = expenses;
+//    }
+
+    public Category(String description) {
         this.description = description;
-        this.expenses = expenses;
-    }
-
-    public Category(int id, String description) {
-        this.id = id;
-        this.description = description;
-    }
-
-    public Category(int id) {
-        this.id = id;
     }
 
     public  Category(){
@@ -64,11 +55,11 @@ public class Category {
         this.description = description;
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
-
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
-    }
+//    public List<Expense> getExpenses() {
+//        return expenses;
+//    }
+//
+//    public void setExpenses(List<Expense> expenses) {
+//        this.expenses = expenses;
+//    }
 }
