@@ -82,7 +82,15 @@ public class ExpensesController {
 
         return new ResponseEntity<>(_expense, HttpStatus.OK);
     }
+    @GetMapping("/expenses/paid")
+    public ResponseEntity<List<Expense>> findByStatus() {
+        List<Expense> expenses = expenseService.findByStatus(true);
 
+        if (expenses.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(expenses, HttpStatus.OK);
+    }
 
 
 

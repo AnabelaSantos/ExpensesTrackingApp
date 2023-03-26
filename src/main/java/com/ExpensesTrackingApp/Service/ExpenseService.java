@@ -59,6 +59,12 @@ public class ExpenseService {
 //        _expense.setCustomerId(customer);
         return expenseRepository.save(_expense);
     }
+
+    public List<Expense> findByStatus(boolean status) {
+        List<Expense> expenses = expenseRepository.findByStatus(true);
+
+        return expenses;
+    }
 }
 
 

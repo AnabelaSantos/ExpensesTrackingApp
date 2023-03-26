@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 List<Expense> findByCustomerId(Long customerId);
-List<Expense> findByStatus(Boolean status);
+List<Expense> findByStatus(boolean status);
 
 @Transactional
     void deleteByCustomerId(Long customerId);
