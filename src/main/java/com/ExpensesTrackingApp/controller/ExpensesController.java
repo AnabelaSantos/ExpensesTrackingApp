@@ -54,9 +54,11 @@ public class ExpensesController {
     }
 
     //deleting one expense by id
-    @DeleteMapping("/expense")
-    public void deleteExpenseById(@RequestParam Integer id) {
-        expenseService.deleteExpenseById(id);
+    @DeleteMapping("/expense/{id}")
+    public ResponseEntity<HttpStatus> deleteExpenseById(@PathVariable("id") Integer id) {
+        expenseRepository.deleteById(id);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 //    Update an expense by id
