@@ -38,6 +38,13 @@ public class CustomerController {
         return new ResponseEntity<>(_customer, HttpStatus.CREATED);
     }
 
+    //deleting a customer
+    @DeleteMapping("/customer/{id}")
+    public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") long id) {
+        customerService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 
 }

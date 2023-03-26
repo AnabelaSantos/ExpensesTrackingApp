@@ -55,7 +55,7 @@ public class ExpenseService {
         Expense _expense = new Expense();
         _expense.setAmount(expenseRequest.getAmount());
         _expense.setNote(expenseRequest.getNote());
-        _expense.setStatus(expenseRequest.getStatus());
+        _expense.setStatus(expenseRequest.isStatus());
 //        _expense.setCustomerId(customer);
         return expenseRepository.save(_expense);
     }
