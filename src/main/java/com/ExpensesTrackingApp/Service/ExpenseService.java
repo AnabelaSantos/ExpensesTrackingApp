@@ -54,7 +54,7 @@ public class ExpenseService {
 //        _expense.setCustomerId(customer);
         return expenseRepository.save(_expense);
     }
-
+//List of paid/unpaid Expenses
     public List<Expense> findByStatus(boolean status, @PathVariable(value = "customerId") Long customerId) {
         List<Expense> expenses = expenseRepository.findByStatusAndCustomerId(status, customerId);
 

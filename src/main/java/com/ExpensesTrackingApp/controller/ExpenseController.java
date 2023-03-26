@@ -81,6 +81,8 @@ public class ExpenseController {
 
         return new ResponseEntity<>(_expense, HttpStatus.OK);
     }
+
+    //get a list of paid expenses by id
     @GetMapping("customer/{customerId}/expenses/paid")
     public ResponseEntity<List<Expense>> findByStatus(@PathVariable(value="customerId") Long customerId) {
         List<Expense> expenses = expenseService.findByStatus(true, customerId);
@@ -91,6 +93,16 @@ public class ExpenseController {
         return new ResponseEntity<>(expenses, HttpStatus.OK);
     }
 
+    //get a list of unpaid expenses by id
+    @GetMapping("customer/{customerId}/expenses/unpaid")
+    public ResponseEntity<List<Expense>> findByStatusUnpaid(@PathVariable(value="customerId") Long customerId) {
+        List<Expense> expenses = expenseService.findByStatus(false, customerId);
+
+        if (expenses.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(expenses, HttpStatus.OK);
+    }
 
 
 
