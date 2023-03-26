@@ -77,6 +77,14 @@ public class ExpensesTrackingAppApplication{
 				expense3.setCategory(category2);
 				expense3.setCustomer(customer2);
 				expenseRepository.save(expense3);
+
+				Expense expense4 = new Expense();
+				expense4.setAmount(95.0F);
+				expense4.setNote("Merchandise");
+				expense4.setStatus(true);
+				expense4.setCategory(category2);
+				expense4.setCustomer(customer1);
+				expenseRepository.save(expense4);
 			}
 		};
 	}

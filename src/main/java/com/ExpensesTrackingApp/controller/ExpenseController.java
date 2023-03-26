@@ -5,7 +5,6 @@ import com.ExpensesTrackingApp.Repository.ExpenseRepository;
 import com.ExpensesTrackingApp.Repository.UserRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.Service.ExpenseService;
-import com.ExpensesTrackingApp.models.Customer;
 import com.ExpensesTrackingApp.models.Expense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,7 @@ import java.util.List;
 
 // creating RestController
 @RestController
-public class ExpensesController {
+public class ExpenseController {
     @Autowired
     ExpenseRepository expenseRepository;
     @Autowired
@@ -31,7 +30,7 @@ public class ExpensesController {
 
 
 
-    ExpensesController(ExpenseRepository expenseRepository){
+    ExpenseController(ExpenseRepository expenseRepository){
         this.expenseRepository = expenseRepository;
     }
 
@@ -82,15 +81,16 @@ public class ExpensesController {
 
         return new ResponseEntity<>(_expense, HttpStatus.OK);
     }
-    @GetMapping("/expenses/paid")
-    public ResponseEntity<List<Expense>> findByStatus() {
-        List<Expense> expenses = expenseService.findByStatus(true);
+    @GetMapping("customer/{customerId}/expenses/paid")
+    public ResponseEntity<List<Expense>> findByStatus(@PathVariable(value="customerId") Long customerId) {
+        List<Expense> expenses = expenseService.findByStatus(true, customerId);
 
         if (expenses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(expenses, HttpStatus.OK);
     }
+
 
 
 

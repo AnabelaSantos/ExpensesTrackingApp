@@ -1,7 +1,9 @@
 package com.ExpensesTrackingApp.Service;
 
+import com.ExpensesTrackingApp.Repository.ExpenseRepository;
 import com.ExpensesTrackingApp.Repository.UserRepository;
 import com.ExpensesTrackingApp.models.Customer;
+import com.ExpensesTrackingApp.models.Expense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.List;
 public class CustomerService {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ExpenseRepository expenseRepository;
 
     //getting all customers records
     public List<Customer> getAllCustomer()
@@ -31,4 +35,5 @@ public class CustomerService {
     public void deleteById(Long id){
         userRepository.deleteById(id);
     }
+
 }

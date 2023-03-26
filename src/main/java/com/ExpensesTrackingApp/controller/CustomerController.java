@@ -4,6 +4,7 @@ package com.ExpensesTrackingApp.controller;
 import com.ExpensesTrackingApp.Repository.UserRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.models.Customer;
+import com.ExpensesTrackingApp.models.Expense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +45,8 @@ public class CustomerController {
         customerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
 
 
 
