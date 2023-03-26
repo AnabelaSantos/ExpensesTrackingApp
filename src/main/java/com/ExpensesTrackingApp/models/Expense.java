@@ -3,8 +3,11 @@ package com.ExpensesTrackingApp.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.NotEmpty;
 
 // mark class as an Entity
 @Entity
@@ -21,10 +24,13 @@ public class Expense {
 
     //defining amount as column name
     @Column(name = "Amount")
+    @Min(1)
     private float amount;
 
     //defining note as column name
     @Column(name = "Note")
+    @NotEmpty(message = "Please enter expense details")
+    @Size(min=3, max=200)
     private String note;
 
     //defining status as column name

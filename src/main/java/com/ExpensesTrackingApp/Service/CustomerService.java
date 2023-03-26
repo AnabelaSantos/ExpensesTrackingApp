@@ -22,7 +22,7 @@ public class CustomerService {
     public Customer getCustomerById(Long id){
         return userRepository.findById(id).get();
     }
-    //saving or updating a specific record
+    //Creating a new customer
     public Customer createCustomer(Customer customer){
         Customer _customer = userRepository.save(new Customer(customer.getEmail(), customer.getUsername()));
         return _customer;

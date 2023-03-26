@@ -2,6 +2,8 @@ package com.ExpensesTrackingApp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +19,13 @@ public class Customer {
     private Long id;
     //defining email as column name
     @Column(name = "email")
+    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message="Please enter a valid email address")
     private String email;
 
     //defining username as column name
     @Column(name = "username")
+    @NotEmpty(message = "Please enter a valid username")
     private String username;
 
     //defining expenses as column name
@@ -34,9 +39,9 @@ public class Customer {
 //        this.expenses = expenses;
 //    }
 
-    public Customer(String username, String email){
-        this.username = username;
+    public Customer(String email,String username){
         this.email = email;
+        this.username = username;
     }
 
     public Customer(){
