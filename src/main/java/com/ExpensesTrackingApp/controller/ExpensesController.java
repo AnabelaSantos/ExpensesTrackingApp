@@ -1,5 +1,6 @@
 package com.ExpensesTrackingApp.controller;
 
+import com.ExpensesTrackingApp.Repository.CategoryRepository;
 import com.ExpensesTrackingApp.Repository.ExpenseRepository;
 import com.ExpensesTrackingApp.Repository.UserRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
@@ -24,6 +25,9 @@ public class ExpensesController {
     CustomerService customerService;
     @Autowired
      UserRepository userRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
+
 
 
 
@@ -62,17 +66,24 @@ public class ExpensesController {
 }
 
 
-    @PostMapping("/customer/{customerId}/expenses")
-    public ResponseEntity<Expense> createExpense(@PathVariable(value="customerId") Long customerId,
-        @RequestBody Expense expenseRequest){
-        Customer customer = customerService.getCustomerById(customerId);
-        Expense _expense = expenseService.save(expenseRequest, customer);
-        return new ResponseEntity<>(_expense, HttpStatus.CREATED);
+//    @PostMapping("/customer/{customerId}/expenses")
+//    public ResponseEntity<Expense> createExpense(@PathVariable(value="customerId") Long customerId,
+//        @RequestBody Expense expenseRequest){
+//        Customer customer = customerService.getCustomerById(customerId);
+//        Expense _expense = expenseService.save(expenseRequest, customer);
+//        return new ResponseEntity<>(_expense, HttpStatus.CREATED);
+//    }
+
+    @PostMapping("/expenses")
+    public ResponseEntity<Expense> createExpense(@RequestBody Expense expense) {
+        Expense _expense = expenseService.save(expense);
+
+        return new ResponseEntity<>(_expense, HttpStatus.OK);
     }
 
 
 
 
-    }
+}
 
 

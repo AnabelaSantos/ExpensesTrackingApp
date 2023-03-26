@@ -46,6 +46,14 @@ public class Expense {
     public Category category;
 
 
+    public Expense(int id, float amount, String note, boolean status, Category category) {
+        this.id = id;
+        this.amount = amount;
+        this.note = note;
+        this.status = status;
+        this.category = category;
+    }
+
     public Expense(float amount, String note, boolean status, Category category) {
         this.amount = amount;
         this.note = note;
