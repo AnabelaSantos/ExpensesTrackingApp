@@ -29,8 +29,14 @@ public class CategoryService {
         categoryRepository.save(category);
     }
     //deleting a specific record
-    public void delete(Integer id){
+    public void deleteById(Integer id){
         categoryRepository.deleteById(id);
+    }
+
+    //Creating a new category
+    public Category createCategory(Category category){
+        Category _category = categoryRepository.save(new Category(category.getDescription()));
+        return _category;
     }
 }
 
