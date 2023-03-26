@@ -1,10 +1,9 @@
 package com.ExpensesTrackingApp.controller;
 
 
-import com.ExpensesTrackingApp.Repository.UserRepository;
+import com.ExpensesTrackingApp.Repository.CustomerRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.models.Customer;
-import com.ExpensesTrackingApp.models.Expense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ import java.util.List;
 @RestController
 public class CustomerController {
     @Autowired
-    UserRepository userRepository;
+    CustomerRepository customerRepository;
     @Autowired
     CustomerService customerService;
 

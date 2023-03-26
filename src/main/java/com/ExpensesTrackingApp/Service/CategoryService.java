@@ -1,10 +1,7 @@
 package com.ExpensesTrackingApp.Service;
 
 import com.ExpensesTrackingApp.Repository.CategoryRepository;
-import com.ExpensesTrackingApp.Repository.UserRepository;
-import com.ExpensesTrackingApp.controller.CategoryController;
 import com.ExpensesTrackingApp.models.Category;
-import com.ExpensesTrackingApp.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

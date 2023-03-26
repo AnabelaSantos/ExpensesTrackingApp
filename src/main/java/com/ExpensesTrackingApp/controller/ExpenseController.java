@@ -2,7 +2,7 @@ package com.ExpensesTrackingApp.controller;
 
 import com.ExpensesTrackingApp.Repository.CategoryRepository;
 import com.ExpensesTrackingApp.Repository.ExpenseRepository;
-import com.ExpensesTrackingApp.Repository.UserRepository;
+import com.ExpensesTrackingApp.Repository.CustomerRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.Service.ExpenseService;
 import com.ExpensesTrackingApp.models.Expense;
@@ -23,7 +23,7 @@ public class ExpenseController {
     @Autowired
     CustomerService customerService;
     @Autowired
-     UserRepository userRepository;
+    CustomerRepository customerRepository;
     @Autowired
     CategoryRepository categoryRepository;
 
