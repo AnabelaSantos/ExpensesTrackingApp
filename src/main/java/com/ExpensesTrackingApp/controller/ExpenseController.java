@@ -3,20 +3,25 @@ package com.ExpensesTrackingApp.controller;
 import com.ExpensesTrackingApp.Repository.CategoryRepository;
 import com.ExpensesTrackingApp.Repository.ExpenseRepository;
 import com.ExpensesTrackingApp.Repository.CustomerRepository;
+import com.ExpensesTrackingApp.Service.CalculationService;
 import com.ExpensesTrackingApp.Service.CategoryService;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.Service.ExpenseService;
 import com.ExpensesTrackingApp.models.Category;
 import com.ExpensesTrackingApp.models.Customer;
 import com.ExpensesTrackingApp.models.Expense;
+import com.ExpensesTrackingApp.models.PaidExpenses;
 import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 // creating RestController
 @RestController
@@ -110,13 +115,25 @@ public class ExpenseController {
 
     //get a list of paid expenses by id
     @GetMapping("customer/{customerId}/expenses/paid")
-    public ResponseEntity<List<Expense>> findByStatus(@PathVariable(value="customerId") Long customerId) {
+    public ResponseEntity<PaidExpenses> findByStatus(@PathVariable(value="customerId") Long customerId) {
         List<Expense> expenses = expenseService.findByStatus(true, customerId);
+        double total = CalculationService.calculateTotalAmount(expenses);
 
         if (expenses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(expenses, HttpStatus.OK);
+        PaidExpenses paidExpenses = new PaidExpenses();
+        paidExpenses.setExpenses(expenses);
+        paidExpenses.setTotal(total);
+
+        return new ResponseEntity<>(paidExpenses, HttpStatus.OK);
+    }
+
+    @GetMapping("customer/{customerId}/expenses/byCategory")
+    public Map<String, Double> totalByCategory(@PathVariable(value="customerId") Long customerId) {
+        List<Expense> expenses = expenseService.getAllExpensesByCustomerId(customerId).getBody();
+
+        return expenses.stream().collect(Collectors.groupingBy(expense -> expense.getCategory().getDescription(), Collectors.summingDouble(Expense::getAmount)));
     }
 
     //update an expense by id
