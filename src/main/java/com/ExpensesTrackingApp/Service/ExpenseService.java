@@ -2,6 +2,7 @@ package com.ExpensesTrackingApp.Service;
 
 import com.ExpensesTrackingApp.Repository.ExpenseRepository;
 import com.ExpensesTrackingApp.models.Expense;
+import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,7 @@ public class ExpenseService {
         expenseRepository.deleteById(id);
     }
 
+
     // saving expense
 
     public Expense saveExpenseDetails(Expense expense) {
@@ -60,7 +62,6 @@ public class ExpenseService {
 
         return expenses;
     }
-
 
 
 }

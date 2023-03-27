@@ -62,11 +62,16 @@ public class ExpenseController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-//    Update an expense by id
-    @PostMapping("/expense")
-    public Expense saveExpenseDetails(@RequestBody Expense expense) {
-    return expenseService.saveExpenseDetails(expense);
-}
+
+
+
+
+//    @PostMapping("/expense")
+//    public Expense saveExpenseDetails(@RequestBody Expense expense) {
+//    return expenseService.saveExpenseDetails(expense);
+//}
+
+//    Update an expense by customer id
     @PostMapping("/customer/{customerId}/expenses")
     public ResponseEntity<Expense> createExpense(@PathVariable(value = "customerId") Long customerId,
                                                  @RequestBody Expense expenseRequest) {
@@ -108,6 +113,15 @@ public class ExpenseController {
         return new ResponseEntity<>(expenses, HttpStatus.OK);
     }
 
+    //delete all expenses of a customer id
+    @DeleteMapping("/customer/{customerId}/expenses")
+    public ResponseEntity<List<Expense>> deleteAllExpensesOfCustomer(@PathVariable(value = "customerId") Long customerId) {
+        if (!customerRepository.existsById(customerId)) {
+            throw new ResourceNotFoundException("Not found Customer with id = " + customerId);
+        }
+        expenseRepository.deleteByCustomerId(customerId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 
 }
