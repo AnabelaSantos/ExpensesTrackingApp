@@ -7,10 +7,7 @@ import com.ExpensesTrackingApp.Service.CalculationService;
 import com.ExpensesTrackingApp.Service.CategoryService;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.Service.ExpenseService;
-import com.ExpensesTrackingApp.models.Category;
-import com.ExpensesTrackingApp.models.Customer;
-import com.ExpensesTrackingApp.models.Expense;
-import com.ExpensesTrackingApp.models.PaidExpenses;
+import com.ExpensesTrackingApp.models.*;
 import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -113,22 +110,8 @@ public class ExpenseController {
         return new ResponseEntity<>(_expense, HttpStatus.OK);
     }
 
-    //get a list of paid expenses by id
-    @GetMapping("customer/{customerId}/expenses/paid")
-    public ResponseEntity<PaidExpenses> findByStatus(@PathVariable(value="customerId") Long customerId) {
-        List<Expense> expenses = expenseService.findByStatus(true, customerId);
-        double total = CalculationService.calculateTotalAmount(expenses);
 
-        if (expenses.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        PaidExpenses paidExpenses = new PaidExpenses();
-        paidExpenses.setExpenses(expenses);
-        paidExpenses.setTotal(total);
-
-        return new ResponseEntity<>(paidExpenses, HttpStatus.OK);
-    }
-
+//get a list of expenses by category and the total amount of each category
     @GetMapping("customer/{customerId}/expenses/byCategory")
     public Map<String, Double> totalByCategory(@PathVariable(value="customerId") Long customerId) {
         List<Expense> expenses = expenseService.getAllExpensesByCustomerId(customerId).getBody();
@@ -137,7 +120,6 @@ public class ExpenseController {
     }
 
     //update an expense by id
-
     @PutMapping("/expense/{id}")
     public ResponseEntity<Expense> updateExpense(@PathVariable("id") Integer id, @RequestBody Expense expense) {
         Expense _expense = expenseRepository.findById(id)
@@ -151,15 +133,36 @@ public class ExpenseController {
         return new ResponseEntity<>(expenseRepository.save(_expense), HttpStatus.OK);
     }
 
-    //get a list of unpaid expenses by id
-    @GetMapping("customer/{customerId}/expenses/unpaid")
-    public ResponseEntity<List<Expense>> findByStatusUnpaid(@PathVariable(value="customerId") Long customerId) {
-        List<Expense> expenses = expenseService.findByStatus(false, customerId);
+    //get a list of paid expenses by id and the total amount of paid expenses
+    @GetMapping("customer/{customerId}/expenses/paid")
+    public ResponseEntity<PaidExpenses> findByStatusUnpaid(@PathVariable(value="customerId") Long customerId) {
+        List<Expense> expenses = expenseService.findByStatus(true, customerId);
+        double total = CalculationService.calculateTotalAmount(expenses);
 
         if (expenses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(expenses, HttpStatus.OK);
+        PaidExpenses paidExpenses = new PaidExpenses();
+        paidExpenses.setExpenses(expenses);
+        paidExpenses.setTotal(total);
+
+        return new ResponseEntity<>(paidExpenses, HttpStatus.OK);
+    }
+
+    //get a list of unpaid expenses by id and the total amount of unpaid expenses
+    @GetMapping("customer/{customerId}/expenses/unpaid")
+    public ResponseEntity<UnpaidExpenses> findByStatus(@PathVariable(value="customerId") Long customerId) {
+        List<Expense> expenses = expenseService.findByStatus(false, customerId);
+        double total = CalculationService.calculateTotalAmount(expenses);
+
+        if (expenses.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        UnpaidExpenses unpaidExpenses = new UnpaidExpenses();
+        unpaidExpenses.setExpenses(expenses);
+        unpaidExpenses.setTotal(total);
+
+        return new ResponseEntity<>(unpaidExpenses, HttpStatus.OK);
     }
 
     //delete all expenses of a customer id
