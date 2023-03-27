@@ -5,7 +5,9 @@ import com.ExpensesTrackingApp.Repository.ExpenseRepository;
 import com.ExpensesTrackingApp.Repository.CustomerRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.Service.ExpenseService;
+import com.ExpensesTrackingApp.models.Customer;
 import com.ExpensesTrackingApp.models.Expense;
+import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,15 +67,17 @@ public class ExpenseController {
     public Expense saveExpenseDetails(@RequestBody Expense expense) {
     return expenseService.saveExpenseDetails(expense);
 }
+    @PostMapping("/customer/{customerId}/expenses")
+    public ResponseEntity<Expense> createExpense(@PathVariable(value = "customerId") Long customerId,
+                                                 @RequestBody Expense expenseRequest) {
+        Expense expense = customerRepository.findById(customerId).map(customer -> {
+            expenseRequest.setCustomer(customer);
+            return expenseRepository.save(expenseRequest);
+        }).orElseThrow(() -> new ResourceNotFoundException("Not found Customer with id = " + customerId));
 
+        return new ResponseEntity<>(expense, HttpStatus.CREATED);
+    }
 
-//    @PostMapping("/customer/{customerId}/expenses")
-//    public ResponseEntity<Expense> createExpense(@PathVariable(value="customerId") Long customerId,
-//        @RequestBody Expense expenseRequest){
-//        Customer customer = customerService.getCustomerById(customerId);
-//        Expense _expense = expenseService.save(expenseRequest, customer);
-//        return new ResponseEntity<>(_expense, HttpStatus.CREATED);
-//    }
 
     @PostMapping("/expenses")
     public ResponseEntity<Expense> createExpense(@RequestBody Expense expense) {
