@@ -41,6 +41,21 @@ public class ExpensesTrackingAppApplication{
 				customer2.setUsername("Late Timing");
 				customerRepository.save(customer2);
 
+				Customer customer3 = new Customer();
+				customer3.setEmail("jose@gmail.com");
+				customer3.setUsername("Jose");
+				customerRepository.save(customer3);
+
+				Customer customer4 = new Customer();
+				customer4.setEmail("maria@gmail.com");
+				customer4.setUsername("Maria");
+				customerRepository.save(customer4);
+
+				Customer customer5 = new Customer();
+				customer5.setEmail("connie@gmail.com");
+				customer5.setUsername("Connie");
+				customerRepository.save(customer5);
+
 				Category category1 = new Category();
 				category1.setDescription("Food");
 				categoryRepository.save(category1);

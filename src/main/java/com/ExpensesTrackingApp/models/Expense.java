@@ -9,6 +9,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.util.Optional;
+
 // mark class as an Entity
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
