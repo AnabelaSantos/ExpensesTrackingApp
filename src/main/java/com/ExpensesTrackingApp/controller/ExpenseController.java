@@ -119,6 +119,21 @@ public class ExpenseController {
         return new ResponseEntity<>(expenses, HttpStatus.OK);
     }
 
+    //update an expense by id
+
+    @PutMapping("/expense/{id}")
+    public ResponseEntity<Expense> updateExpense(@PathVariable("id") Integer id, @RequestBody Expense expense) {
+        Expense _expense = expenseRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found Expense with id = " + id));
+
+        _expense.setAmount(expense.getAmount());
+        _expense.setNote(expense.getNote());
+        _expense.setStatus(expense.isStatus());
+
+
+        return new ResponseEntity<>(expenseRepository.save(_expense), HttpStatus.OK);
+    }
+
     //get a list of unpaid expenses by id
     @GetMapping("customer/{customerId}/expenses/unpaid")
     public ResponseEntity<List<Expense>> findByStatusUnpaid(@PathVariable(value="customerId") Long customerId) {
