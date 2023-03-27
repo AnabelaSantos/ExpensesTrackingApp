@@ -4,6 +4,7 @@ package com.ExpensesTrackingApp.controller;
 import com.ExpensesTrackingApp.Repository.CustomerRepository;
 import com.ExpensesTrackingApp.Service.CustomerService;
 import com.ExpensesTrackingApp.models.Customer;
+import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,18 @@ public class CustomerController {
         customerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+//update customer
+    @PutMapping("/customer/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customer) {
+        Customer _customer = customerRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found Customer with id = " + id));
 
+        _customer.setEmail(customer.getEmail());
+        _customer.setUsername(customer.getUsername());
+
+
+        return new ResponseEntity<>(customerRepository.save(_customer), HttpStatus.OK);
+    }
 
 
 

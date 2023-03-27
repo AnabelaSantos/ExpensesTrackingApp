@@ -24,7 +24,7 @@ public class CustomerService {
     public Customer getCustomerById(Long id){
         return customerRepository.findById(id).get();
     }
-    //Creating a new customer
+    //Creating a new customer and updating an existing one
     public Customer createCustomer(Customer customer){
         Customer _customer = customerRepository.save(new Customer(customer.getEmail(), customer.getUsername()));
         return _customer;
