@@ -1,0 +1,11 @@
+---
+title: PaidExpenses
+---
+
+classDiagram
+PaidExpenses -- ExpenseController
+
+ PaidExpenses: -List~Expense~ expenses
+ PaidExpenses: -double total
+ PaidExpenses: +setExpenses(List~Expense~ expenses)
+ PaidExpenses: +setTotal()

@@ -1,0 +1,48 @@
+---
+title: Expense
+---
+classDiagram
+
+ExpenseController -- Expense
+ExpenseService -- Expense 
+ExpenseController -- ExpenseService
+ExpenseRepository -- ExpenseController
+CategoryRepository -- ExpenseController
+CustomerRepository -- ExpenseController
+PaidExpenses -- ExpenseController
+UnpaidExpenses -- ExpenseController
+CalculationService -- ExpenseController
+
+ Expense: -Int id
+ Expense: -Float amount
+ Expense: -String note
+ Expense: -Boolean status
+ Expense: +Int category_id
+ Expense: +Long customer_id
+
+ExpenseController: +ExpenseController
+ExpenseController: +all()
+ExpenseController: +getExpense()
+ExpenseController: +getAllExpensesByCustomerId()
+ExpenseController: +deleteExpenseById()
+ExpenseController: +createExpense()
+ExpenseController: +createExpenseWithCategory()
+ExpenseController: +totalByCategory()
+ExpenseController: +updateExpense()
+ExpenseController: +findByStatusPaid()
+ExpenseController: +findByStatusUnpaid()
+ExpenseController: +deleteAllExpensesOfCustomer()
+
+
+ExpenseService: +ExpenseService
+ExpenseService: +getAllExpense()
+ExpenseService: +getExpenseById()
+ExpenseService: +getAllExpensesByCustomerId()
+ExpenseService: +deleteExpenseById()
+ExpenseService: +saveExpenseDetails()
+ExpenseService: +findByStatus()
+
+
+ExpenseRepository: +ExpenseRepository~Interface~
+CustomerRepository: +CustomerRepository~Interface~
+CategoryRepository: +CategoryRepository~Interface~

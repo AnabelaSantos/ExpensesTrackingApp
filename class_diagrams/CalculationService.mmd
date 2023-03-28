@@ -1,0 +1,10 @@
+---
+title: Calculation Servive
+---
+
+classDiagram
+CalculationService -- ExpenseController
+
+ CalculationService: +CalculationService~Interface~
+ CalculationService: +calculateTotalAmount(List~Expense~ expenses)
+
