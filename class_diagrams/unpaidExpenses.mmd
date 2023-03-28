@@ -1,0 +1,11 @@
+---
+title: Unpaid Expenses
+---
+
+classDiagram
+UnpaidExpenses -- ExpenseController
+
+ UnpaidExpenses: -List~Expense~ expenses
+ UnpaidExpenses: -double total
+ UnpaidExpenses: +setExpenses(List~Expense~ expenses)
+ UnpaidExpenses: +setTotal()

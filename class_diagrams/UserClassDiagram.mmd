@@ -1,0 +1,34 @@
+---
+title: Customer
+---
+classDiagram
+
+CustomerController -- Customer
+CustomerService -- Customer 
+CustomerController -- CustomerService
+CustomerRepository -- CustomerController
+
+ 
+ Customer: -Long id
+ Customer: -String email
+ Customer: -String username
+
+
+
+CustomerController: +CustomerController
+CustomerController: +getAllCustomer()
+CustomerController: +getCustomer()
+CustomerController: +CreateCustomer()
+CustomerController: +DeleteCustomer()
+CustomerController: +UpdateCustomer()
+
+
+CustomerService: +CustomerService
+CustomerService: +getAllCustomer()
+CustomerService: +getCustomerById()
+CustomerService: +createCustomer()
+CustomerService: +deleteById()
+
+CustomerRepository: +CustomerRepository~Interface~
+
+

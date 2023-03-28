@@ -55,39 +55,39 @@ public class Expense {
     public Category category;
 
 
-//    public Expense(int id, float amount, String note, boolean status, Category category) {
-//        this.id = id;
-//        this.amount = amount;
-//        this.note = note;
-//        this.status = status;
-//        this.category = category;
-//    }
-//
-//    public Expense(float amount, String note, boolean status, Category category) {
-//        this.amount = amount;
-//        this.note = note;
-//        this.status = status;
-//        this.category = category;
-//    }
-//
-//    public Expense(float amount, String note, Category category) {
-//        this.amount = amount;
-//        this.note = note;
-//        this.category = category;
-//    }
-//
-//    public Expense(float amount, Category category) {
-//        this.amount = amount;
-//        this.category = category;
-//    }
-//
-//    public Expense(Category category){
-//
-//        this.category = category;
-//    }
-//    public Expense(){
-//
-//    }
+    public Expense(int id, float amount, String note, boolean status, Category category) {
+        this.id = id;
+        this.amount = amount;
+        this.note = note;
+        this.status = status;
+        this.category = category;
+    }
+
+    public Expense(float amount, String note, boolean status, Category category) {
+        this.amount = amount;
+        this.note = note;
+        this.status = status;
+        this.category = category;
+    }
+
+    public Expense(float amount, String note, Category category) {
+        this.amount = amount;
+        this.note = note;
+        this.category = category;
+    }
+
+    public Expense(float amount, Category category) {
+        this.amount = amount;
+        this.category = category;
+    }
+
+    public Expense(Category category){
+
+        this.category = category;
+    }
+    public Expense(){
+
+    }
 
     public Integer getId() {
         return id;

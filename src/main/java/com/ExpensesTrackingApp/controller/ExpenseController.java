@@ -14,10 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 // creating RestController
@@ -135,7 +133,7 @@ public class ExpenseController {
 
     //get a list of paid expenses by id and the total amount of paid expenses
     @GetMapping("customer/{customerId}/expenses/paid")
-    public ResponseEntity<PaidExpenses> findByStatusUnpaid(@PathVariable(value="customerId") Long customerId) {
+    public ResponseEntity<PaidExpenses> findByStatusPaid(@PathVariable(value="customerId") Long customerId) {
         List<Expense> expenses = expenseService.findByStatus(true, customerId);
         double total = CalculationService.calculateTotalAmount(expenses);
 
@@ -151,7 +149,7 @@ public class ExpenseController {
 
     //get a list of unpaid expenses by id and the total amount of unpaid expenses
     @GetMapping("customer/{customerId}/expenses/unpaid")
-    public ResponseEntity<UnpaidExpenses> findByStatus(@PathVariable(value="customerId") Long customerId) {
+    public ResponseEntity<UnpaidExpenses> findByStatusUnpaid(@PathVariable(value="customerId") Long customerId) {
         List<Expense> expenses = expenseService.findByStatus(false, customerId);
         double total = CalculationService.calculateTotalAmount(expenses);
 

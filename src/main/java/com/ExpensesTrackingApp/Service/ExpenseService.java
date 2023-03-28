@@ -63,11 +63,7 @@ public class ExpenseService {
         return expenses;
     }
 
-    public List<Expense> findByStatusUnpaid(boolean status, @PathVariable(value = "customerId") Long customerId) {
-        List<Expense> expenses = expenseRepository.findByStatusAndCustomerId(status, customerId);
 
-        return expenses;
-    }
 
 
 }

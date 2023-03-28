@@ -1,0 +1,33 @@
+---
+title: Category
+---
+
+classDiagram
+
+
+ CategoryController -- Category
+ CategoryService -- Category 
+ CategoryController -- CategoryService
+  CategoryRepository -- CategoryController
+ 
+ Category: -Int id
+ Category: -String description
+
+
+
+CategoryController: +CategoryController
+CategoryController: +getAllCategory()
+CategoryController: +getCategory()
+CategoryController: +deleteCategory()
+CategoryController: +createCategory()
+
+
+CategoryService: +CategoryService
+CategoryService: +getAllCategory()
+CategoryService: +getCategoryById()
+CategoryService: +deleteById()
+CategoryService: +createCategory()
+CategoryService: +saveOrUpdate()
+
+CategoryRepository: +CategoryRepository~Interface~
+
