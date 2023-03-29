@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 //@EnableAutoConfiguration
@@ -99,6 +101,16 @@ public class ExpensesTrackingAppApplication{
 				expense4.setCategory(category2);
 				expense4.setCustomer(customer1);
 				expenseRepository.save(expense4);
+			}
+		};
+	}
+
+	@Bean
+	public WebMvcConfigurer ExpensesTrackingAppConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/java config").allowedOrigins("http://localhost:8080");
 			}
 		};
 	}
