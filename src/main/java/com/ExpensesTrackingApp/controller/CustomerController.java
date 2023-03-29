@@ -22,17 +22,22 @@ public class CustomerController {
     CustomerService customerService;
 
 //creating a get mapping that retrieves a list with all customers' details
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/customer")
     public List<Customer> getAllCustomer() {
         return customerService.getAllCustomer();
         }
 
 //creating a get mapping that retrieves a detail of a specific customer
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/customer/{id}")
     public Customer getCustomer(@PathVariable("id")Long id){
         return customerService.getCustomerById(id);
     }
-// creating a post mapping that adds a new customer
+
+
+    // creating a post mapping that adds a new customer
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/customer")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         Customer _customer = customerService.createCustomer(customer);
@@ -40,12 +45,14 @@ public class CustomerController {
     }
 
     //deleting a customer
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping("/customer/{id}")
     public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") long id) {
         customerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 //update customer
+    @CrossOrigin(origins = "http://localhost:8080")
     @PutMapping("/customer/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customer) {
         Customer _customer = customerRepository.findById(id)

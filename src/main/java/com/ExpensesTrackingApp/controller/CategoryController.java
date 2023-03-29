@@ -22,11 +22,13 @@ public class CategoryController {
         return categoryRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/category/{id}")
     public Category getCategory(@PathVariable("id")Integer id){
         return categoryService.getCategoryById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping("/category/{id}")
     public ResponseEntity<HttpStatus> deleteCategory(@PathVariable("id") Integer id) {
         categoryRepository.deleteById(id);
@@ -35,6 +37,7 @@ public class CategoryController {
     }
 
     // creating a post mapping that adds a new category
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/category")
     public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         Category _category = categoryService.createCategory(category);
