@@ -1,9 +1,3 @@
-package com.ExpensesTrackingApp.models;
-
-import jakarta.persistence.*;
-
-
-//mark class as entity
 @Entity
 public class Category {
 
