@@ -2,8 +2,6 @@ package com.ExpensesTrackingApp.models;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 //mark class as entity
 @Entity
@@ -21,15 +19,6 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-//    @Column(name = "expenses")
-////    @OneToMany(mappedBy = "category")
-////    private List<Expense> expenses = new ArrayList<>();
-
-//    public Category(String description, List<Expense> expenses) {
-//        super();
-//        this.description = description;
-//        this.expenses = expenses;
-//    }
 
     public Category(String description) {
         this.description = description;
@@ -54,6 +43,5 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 }
