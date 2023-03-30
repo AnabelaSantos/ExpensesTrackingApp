@@ -110,7 +110,7 @@ public class ExpensesTrackingAppApplication{
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/java config").allowedOrigins("http://localhost:8080");
+				registry.addMapping("/**").allowedOrigins("http://localhost:3000");
 			}
 		};
 	}
