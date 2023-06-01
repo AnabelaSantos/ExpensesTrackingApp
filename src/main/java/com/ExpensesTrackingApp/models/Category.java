@@ -1,7 +1,7 @@
 package com.ExpensesTrackingApp.models;
 
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 
 //mark class as entity
 @Entity

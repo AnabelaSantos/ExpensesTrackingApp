@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:each="expense : ${expenses}">
+        <span th:text="${expense.category.description} + ' |'"></span>
+        <span th:text="${expense.amount} + ' |'"></span>
+        <span th:text="'paid: '+${expense.status} + ' |'"></span>
+<br>
+    </div>
+</div>
+</body>
+</html>

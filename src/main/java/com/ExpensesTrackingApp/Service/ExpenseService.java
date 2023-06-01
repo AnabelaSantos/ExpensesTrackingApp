@@ -30,7 +30,7 @@ public class ExpenseService {
     }
 
     //getting the expenses by id
-    public ResponseEntity<List<Expense>> getAllExpensesByCustomerId(@PathVariable(value = "customerId") Long customerId) {
+    public ResponseEntity<List<Expense>> getAllExpensesByCustomerId(Long customerId) {
 
         List<Expense> customerExpenses = expenseRepository.findByCustomerId(customerId);
         return new ResponseEntity<>(customerExpenses, HttpStatus.OK);
