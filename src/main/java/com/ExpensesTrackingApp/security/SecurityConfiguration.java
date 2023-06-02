@@ -22,7 +22,8 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests()
-                .antMatchers("/**").hasAuthority("User")
+                .antMatchers("/expenseList").hasAuthority("User")
+                .antMatchers("/").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest()
                 .authenticated()

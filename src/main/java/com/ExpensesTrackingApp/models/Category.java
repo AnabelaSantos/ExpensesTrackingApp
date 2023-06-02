@@ -28,7 +28,7 @@ public class Category {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
