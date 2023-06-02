@@ -35,35 +35,41 @@ public class ExpensesTrackingAppApplication{
 			public void run(String... args) throws Exception {
 				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 				String secret = "{bcrypt}" + encoder.encode("default");
-				String password2 = "{bcrypt}" + encoder.encode("kateuphill");
+				String password2 = "{bcrypt}" + encoder.encode("uphill");
+				String password3 = "{bcrypt}" + encoder.encode("timing");
+				String password4 = "{bcrypt}" + encoder.encode("gonzales");
+				String password5 = "{bcrypt}" + encoder.encode("gomez");
+				String password6 = "{bcrypt}" + encoder.encode("tariq");
+
+
 				Customer customer1 = new Customer();
-				customer1.setEmail("kateuphill@gmail.com");
-				customer1.setUsername("kateuphill@gmail.com");
+				customer1.setEmail("kate.uphill@gmail.com");
+				customer1.setUsername("kate.uphill@gmail.com");
 				customer1.setPassword(password2);
 				customerRepository.save(customer1);
 
 				Customer customer2 = new Customer();
-				customer2.setEmail("late@gmail.com");
-				customer2.setUsername("Late Timing");
-				customer2.setPassword(secret);
+				customer2.setEmail("late.timing@gmail.com");
+				customer2.setUsername("late.timing@gmail.com");
+				customer2.setPassword(password3);
 				customerRepository.save(customer2);
 
 				Customer customer3 = new Customer();
-				customer3.setEmail("jose@gmail.com");
-				customer3.setUsername("Jose");
-				customer3.setPassword(secret);
+				customer3.setEmail("jose.gonzales@gmail.com");
+				customer3.setUsername("jose.gonzales@gmail.com");
+				customer3.setPassword(password4);
 				customerRepository.save(customer3);
 
 				Customer customer4 = new Customer();
-				customer4.setEmail("maria@gmail.com");
-				customer4.setUsername("Maria");
-				customer4.setPassword(secret);
+				customer4.setEmail("maria.gomez@gmail.com");
+				customer4.setUsername("maria.gomez@gmail.com");
+				customer4.setPassword(password5);
 				customerRepository.save(customer4);
 
 				Customer customer5 = new Customer();
-				customer5.setEmail("connie@gmail.com");
-				customer5.setUsername("Connie");
-				customer5.setPassword(secret);
+				customer5.setEmail("ali.tariq@gmail.com");
+				customer5.setUsername("ali.tariq@gmail.com");
+				customer5.setPassword(password6);
 				customerRepository.save(customer5);
 
 				Category category1 = new Category();
