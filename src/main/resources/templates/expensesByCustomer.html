@@ -6,13 +6,32 @@
 </head>
 <body>
 <div class="container">
-    <div th:each="expense : ${expenses}">
-        <span th:text="${expense.category.description} + ' |'"></span>
-        <span th:text="${expense.amount} + ' |'"></span>
-        <span th:text="'paid: '+${expense.status} + ' |'"></span>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Paid?</th>
+        </tr>
+        <tr th:each="expense : ${expenses}">
+            <td>
+                <p th:text="${expense.category.description}"></p>
+            </td>
+            <td>
+                <p th:text="${expense.amount}"></p>
+            <td>
+                <p th:text="'paid: '+${expense.status}"></p>
+            </td>
+            </td>
+        </tr>
+
+    </table>
 <br>
     </div>
+    </br>
 </div>
-<form method="GET" action="../logout">  <button type="submit">LOG OUT</button></form>
+<form method="POST" action="}">
+    <button type="submit">Add</button>
+</form>
+<form method="GET" action="../logout">  <button type="submit">Log Out Of Barclays Expenses Tracker</button></form>
 </body>
 </html>

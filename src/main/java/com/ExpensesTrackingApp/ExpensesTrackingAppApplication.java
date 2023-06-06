@@ -37,9 +37,8 @@ public class ExpensesTrackingAppApplication{
 				String secret = "{bcrypt}" + encoder.encode("default");
 				String password2 = "{bcrypt}" + encoder.encode("uphill");
 				String password3 = "{bcrypt}" + encoder.encode("timing");
-				String password4 = "{bcrypt}" + encoder.encode("gonzales");
-				String password5 = "{bcrypt}" + encoder.encode("gomez");
-				String password6 = "{bcrypt}" + encoder.encode("tariq");
+				String password4 = "{bcrypt}" + encoder.encode("gomez");
+				String password5 = "{bcrypt}" + encoder.encode("tariq");
 
 
 				Customer customer1 = new Customer();
@@ -55,22 +54,16 @@ public class ExpensesTrackingAppApplication{
 				customerRepository.save(customer2);
 
 				Customer customer3 = new Customer();
-				customer3.setEmail("jose.gonzales@gmail.com");
-				customer3.setUsername("jose.gonzales@gmail.com");
+				customer3.setEmail("maria.gomez@gmail.com");
+				customer3.setUsername("maria.gomez@gmail.com");
 				customer3.setPassword(password4);
 				customerRepository.save(customer3);
 
 				Customer customer4 = new Customer();
-				customer4.setEmail("maria.gomez@gmail.com");
-				customer4.setUsername("maria.gomez@gmail.com");
+				customer4.setEmail("ali.tariq@gmail.com");
+				customer4.setUsername("ali.tariq@gmail.com");
 				customer4.setPassword(password5);
 				customerRepository.save(customer4);
-
-				Customer customer5 = new Customer();
-				customer5.setEmail("ali.tariq@gmail.com");
-				customer5.setUsername("ali.tariq@gmail.com");
-				customer5.setPassword(password6);
-				customerRepository.save(customer5);
 
 				Category category1 = new Category();
 				category1.setDescription("Food");
@@ -83,6 +76,10 @@ public class ExpensesTrackingAppApplication{
 				Category category3 = new Category();
 				category3.setDescription("Accommodation");
 				categoryRepository.save(category3);
+
+				Category category4 = new Category();
+				category4.setDescription("Travel");
+				categoryRepository.save(category4);
 
 				Expense expense1 = new Expense();
 				expense1.setAmount(35.48F);
@@ -104,17 +101,18 @@ public class ExpensesTrackingAppApplication{
 				expense3.setAmount(75.0F);
 				expense3.setNote("Branch Visit");
 				expense3.setStatus(true);
-				expense3.setCategory(category2);
-				expense3.setCustomer(customer2);
+				expense3.setCategory(category4);
+				expense3.setCustomer(customer3);
 				expenseRepository.save(expense3);
 
 				Expense expense4 = new Expense();
 				expense4.setAmount(95.0F);
-				expense4.setNote("Merchandise");
+				expense4.setNote("Petrol");
 				expense4.setStatus(true);
 				expense4.setCategory(category2);
-				expense4.setCustomer(customer1);
+				expense4.setCustomer(customer4);
 				expenseRepository.save(expense4);
+
 			}
 		};
 	}
