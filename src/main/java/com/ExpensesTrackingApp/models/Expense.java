@@ -27,14 +27,11 @@ public class Expense {
     //defining amount as column name
     @Column(name = "Amount")
     //validation minimum amount of 1
-    @Min(1)
     private float amount;
 
     //defining Note as column name
     @Column(name = "Note")
     //validation minimum of 3 and maximum of 200 chars. if not is empty send message
-    @NotEmpty(message = "Please enter expense details")
-    @Size(min=3, max=200)
     private String note;
 
     //defining status as column name
@@ -135,6 +132,10 @@ public class Expense {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String paid() {
+        return status ? "Paid" : "Outstanding";
     }
 
 }

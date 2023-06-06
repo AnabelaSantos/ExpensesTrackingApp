@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <link th:href="@{/style/stylesheet.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div class="container">
-    <table>
+    <table  class="table table-dark">
         <tr>
             <th>Category</th>
             <th>Amount</th>
@@ -19,7 +21,7 @@
             <td>
                 <p th:text="${expense.amount}"></p>
             <td>
-                <p th:text="'paid: '+${expense.status}"></p>
+                <p th:text="${expense.paid()}"></p>
             </td>
             </td>
         </tr>
@@ -29,9 +31,28 @@
     </div>
     </br>
 </div>
-<form method="POST" action="}">
-    <button type="submit">Add</button>
+<form method="POST" action="http://localhost:8080/addNewExpense">
+    <select name="category">
+        <option th:each="category : ${categories}" th:value="${category}" th:text="${category}"></option>
+    </select>
+    </br>
+    </br>
+    <input type="number" min="0" value="0" name="amount">
+    </br>
+    </br>
+    <select id="status" name="paid">
+        <option value="true">Paid</option>
+        <option value="false">Unpaid</option>
+    </select>
+    </br>
+    </br>
+    <button type="submit">Add A New Expense</button>
 </form>
+</br>
+</br>
+</br>
+</br>
 <form method="GET" action="../logout">  <button type="submit">Log Out Of Barclays Expenses Tracker</button></form>
+</br>
 </body>
 </html>
